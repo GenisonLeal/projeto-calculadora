@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class AppCalculadora {
 
-	/*Boa noite*/
 	public static void main(String[] args) {
 		Calculadora calculadora = new Calculadora(); // Instancia a calculadora
 		Scanner sc = new Scanner(System.in);
