@@ -1,0 +1,19 @@
+INDEX VERSION 1.134+C:\Users\genl_santos\eclipse-workspace\Calculadora\.metadata\.plugins\org.eclipse.jdt.core
+3098876097.index
+3842817113.index
+2683864836.index
+2392291230.index
+3195943758.index
+3081195380.index
+444083160.index
+199374972.index
+3804580403.index
+1348018718.index
+1865797976.index
+3549019225.index
+3087804119.index
+441364184.index
+3311935051.index
+3180763212.index
+2586876549.index
+656354293.index

@@ -1,0 +1,94 @@
+package main;
+
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class AppCalculadora {
+
+	public static void main(String[] args) {
+		Calculadora calculadora = new Calculadora(); // Instancia a calculadora
+		Scanner sc = new Scanner(System.in);
+		boolean continuar = true;
+
+		System.out.println("Bem vindo!");
+		System.out.println("-------------------------------------------------------------------------------------");
+
+		while (continuar) {
+			double num1 = 0, num2 = 0;
+			String operacao;
+			double resultado;
+
+			boolean num1Valido = false;
+			while (!num1Valido) {
+				try {
+					System.out.println("Digite o primeiro número: ");
+					num1 = sc.nextDouble();
+					num1Valido = true;
+				} catch (InputMismatchException e) {
+					System.out.println("Entrada inválida. Digite outro número.");
+					sc.next(); // Limpa o buffer do scanner
+				}
+			}
+
+			System.out.println("Digite a operação (+, -, *, /) ou 'sair' para terminar: ");
+			operacao = sc.next();
+
+			if (operacao.equalsIgnoreCase("sair")) {
+				continuar = false;
+				break; // Sai do loop while principal
+			}
+
+			boolean num2Valido = false;
+			while (!num2Valido) {
+				try {
+					System.out.println("Digite o segundo número: ");
+					num2 = sc.nextDouble();
+					num2Valido = true;
+				} catch (InputMismatchException e) {
+					System.out.println("Entrada inválida. Digite outro número.");
+					sc.next(); // Limpa o buffer do scanner
+				}
+			}
+
+			// --- Realizar o cálculo e mostrar o resultado ---
+			try {
+				boolean operacaoValidaParaProsseguir = true;
+				switch (operacao) {
+				case "+":
+					resultado = calculadora.somar(num1, num2);
+					System.out.printf("%.2f + %.2f = %.2f\n", num1, num2, resultado);
+					break;
+				case "-":
+					resultado = calculadora.subtrair(num1, num2);
+					System.out.printf("%.2f + %.2f = %.2f\n", num1, num2, resultado);
+					break;
+				case "*":
+					resultado = calculadora.multiplicar(num1, num2);
+					System.out.printf("%.2f + %.2f = %.2f\n", num1, num2, resultado);
+					break;
+				case "/":
+					resultado = calculadora.dividir(num1, num2); // A exceção de divisão por zero é tratada aqui
+					System.out.printf("%.2f + %.2f = %.2f\n", num1, num2, resultado);
+					break;
+				default:
+					System.out.println("Operação inválida! As opções são +, -, *, / ou sair.");
+					operacaoValidaParaProsseguir = false; // Pula para a próxima iteração do loop principal
+				}
+				
+				if (!operacaoValidaParaProsseguir) {
+					System.out.println("----------------------------------------------------------------------------------");
+					continue; // Volta para o início do loop while principal, pedindo tudo de novo
+				}
+			} catch (IllegalArgumentException e) {
+				System.out.println("Erro: " + e.getMessage());
+			}
+
+			System.out.println("-------------------------------------------------------------------------------------------");
+		}
+
+		System.out.println("Obrigado por usar a Calculadora!");
+		sc.close();
+	}
+
+}
